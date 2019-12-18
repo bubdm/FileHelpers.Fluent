@@ -9,6 +9,7 @@ Was introduced some new improvements and features that leads to breaking changes
     <Description>Core features of Fluent FileHelpers</Description>
     <Authors>Naves Harlen</Authors>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>
+    <PackageProjectUrl>https://github.com/harlennaves/FileHelpers.Fluent</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <DefineConstants>NETSTANDARD2_0</DefineConstants>

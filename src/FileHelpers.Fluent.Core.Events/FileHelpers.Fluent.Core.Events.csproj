@@ -9,6 +9,7 @@ Was introduced some new improvements and features that leads to breaking changes
     <Description>Base library to add support to events into an engine</Description>
     <Authors>Naves Harlen</Authors>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>
+    <PackageProjectUrl>https://github.com/harlennaves/FileHelpers.Fluent</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
