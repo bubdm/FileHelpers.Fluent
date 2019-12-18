@@ -38,4 +38,7 @@ steps:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
-    
+
+- task: CmdLine@2
+  inputs:
+    script: nuget push -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/src/FileHelpers.Fluent.Core/bin/Release/FileHelpers.Fluent.Core.2.0.0.nupkg
