@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("FileHelpers.Fluent.Fixed")]
+[assembly: InternalsVisibleTo("FileHelpers.Fluent.Xml")]
 
 namespace FileHelpers.Fluent.Core.Extensions
 {

@@ -88,18 +88,6 @@ namespace FileHelpers.Fluent.Fixed
 
         #endregion
 
-        public override ExpandoObject[] ReadBuffer(byte[] buffer) =>
-            ReadBufferAsync(buffer).GetAwaiter().GetResult();
-
-        public override Task<ExpandoObject[]> ReadBufferAsync(byte[] buffer)
-        {
-            using (var stream = new MemoryStream(buffer))
-                using (var streamReader = new StreamReader(stream, Encoding))
-                    return ReadStreamAsync(streamReader);
-        }
-
-        public override ExpandoObject[] ReadStream(StreamReader reader) =>
-            ReadStreamAsync(reader).GetAwaiter().GetResult();
 
         public override async Task<ExpandoObject[]> ReadStreamAsync(StreamReader reader)
         {
@@ -130,23 +118,6 @@ namespace FileHelpers.Fluent.Fixed
 
             return items.ToArray();
         }
-
-        public override ExpandoObject[] ReadString(string source)
-        {
-            if (source == null)
-                source = string.Empty;
-
-            using (var stream = new MemoryStream(Encoding.GetBytes(source)))
-            {
-                using (var streamReader = new StreamReader(stream))
-                {
-                    return ReadStream(streamReader);
-                }
-            }
-        }
-
-        public override void WriteStream(TextWriter writer, IEnumerable<ExpandoObject> records, bool flush = true) =>
-            WriteStreamAsync(writer, records, flush).GetAwaiter().GetResult();
 
         public override async Task WriteStreamAsync(TextWriter writer, IEnumerable<ExpandoObject> records, bool flush = true)
         {
@@ -186,16 +157,6 @@ namespace FileHelpers.Fluent.Fixed
                 if (flush)
                     await writer.FlushAsync();
                 lineNumber++;
-            }
-        }
-
-        public override string WriteString(IEnumerable<ExpandoObject> records)
-        {
-            var sb = new StringBuilder();
-            using (var writer = new StringWriter(sb))
-            {
-                WriteStream(writer, records);
-                return sb.ToString();
             }
         }
     }
