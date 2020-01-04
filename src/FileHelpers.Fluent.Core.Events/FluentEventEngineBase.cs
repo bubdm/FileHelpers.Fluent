@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FileHelpers.Fluent.Core.Events
 {
@@ -58,6 +61,36 @@ namespace FileHelpers.Fluent.Core.Events
             AfterWriteRecord?.Invoke(this, args);
 
             return args;
+        }
+
+        public override async Task<ExpandoObject[]> ReadStreamAsync(StreamReader reader)
+        {
+            IList<ExpandoObject> items = new List<ExpandoObject>();
+
+            string currentLine = await reader.ReadLineAsync();
+            int currentLineNumber = 1;
+            while (currentLine != null)
+            {
+                if (!string.IsNullOrWhiteSpace(currentLine))
+                {
+                    var beforeReadArgs = OnBeforeReadRecord(currentLine, currentLineNumber);
+                    if (!beforeReadArgs.SkipRecord)
+                    {
+                        if (beforeReadArgs.LineChanged)
+                            currentLine = beforeReadArgs.Line;
+
+                        ExpandoObject item = await ReadLineAsync(currentLine, Descriptor);
+
+                        var afterReadArgs = OnAfterReadRecord(currentLine, currentLineNumber, item);
+
+                        items.Add(afterReadArgs.Record);
+                    }
+                }
+                currentLineNumber++;
+                currentLine = await reader.ReadLineAsync();
+            }
+
+            return items.ToArray();
         }
     }
 }

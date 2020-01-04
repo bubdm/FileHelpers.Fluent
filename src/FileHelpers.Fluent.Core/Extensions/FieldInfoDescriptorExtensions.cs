@@ -37,7 +37,7 @@ namespace FileHelpers.Fluent.Core.Extensions
 
             ConverterBase converterInstance =
                 fieldDescriptor.Converter == null
-                ? ConverterFactory.GetDefaultConverter(fieldDescriptor.Type)
+                ? ConverterFactory.GetDefaultConverter(fieldDescriptor.Type, fieldDescriptor.ConverterFormat)
                 : ConverterFactory.GetConverter(fieldDescriptor.Converter, fieldDescriptor.ConverterFormat);
 
             return converterInstance == null
@@ -48,17 +48,22 @@ namespace FileHelpers.Fluent.Core.Extensions
 
         public static string CreateFieldString(this IFieldInfoDescriptor fieldBuilder, object fieldValue)
         {
-            if (fieldBuilder.Converter == null)
+            ConverterBase converterInstance = null;
+
+            if (fieldBuilder.Type != null || fieldBuilder.Converter != null)
+                converterInstance = fieldBuilder.Converter == null
+                ? ConverterFactory.GetDefaultConverter(fieldBuilder.Type, fieldBuilder.ConverterFormat)
+                : ConverterFactory.GetConverter(fieldBuilder.Converter, fieldBuilder.ConverterFormat);
+
+            if (converterInstance == null)
             {
                 if (fieldValue == null)
                     return string.Empty;
+
                 return fieldValue.ToString();
             }
 
-            ConverterBase converterInstance =
-                ConverterFactory.GetConverter(fieldBuilder.Converter, fieldBuilder.ConverterFormat);
-
-            return converterInstance?.FieldToString(fieldValue) ?? string.Empty;
+            return converterInstance.FieldToString(fieldValue) ?? string.Empty;
         }
     }
 }

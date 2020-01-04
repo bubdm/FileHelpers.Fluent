@@ -88,37 +88,6 @@ namespace FileHelpers.Fluent.Fixed
 
         #endregion
 
-
-        public override async Task<ExpandoObject[]> ReadStreamAsync(StreamReader reader)
-        {
-            IList<ExpandoObject> items = new List<ExpandoObject>();
-
-            string currentLine = await reader.ReadLineAsync();
-            int currentLineNumber = 1;
-            while (currentLine != null)
-            {
-                if (!string.IsNullOrWhiteSpace(currentLine))
-                {
-                    var beforeReadArgs = OnBeforeReadRecord(currentLine, currentLineNumber);
-                    if (!beforeReadArgs.SkipRecord)
-                    {
-                        if (beforeReadArgs.LineChanged)
-                            currentLine = beforeReadArgs.Line;
-
-                        ExpandoObject item = await ReadLineAsync(currentLine, Descriptor);
-
-                        var afterReadArgs = OnAfterReadRecord(currentLine, currentLineNumber, item);
-
-                        items.Add(afterReadArgs.Record);
-                    }
-                }
-                currentLineNumber++;
-                currentLine = await reader.ReadLineAsync();
-            }
-
-            return items.ToArray();
-        }
-
         public override async Task WriteStreamAsync(TextWriter writer, IEnumerable<ExpandoObject> records, bool flush = true)
         {
             writer.NewLine = Environment.NewLine;

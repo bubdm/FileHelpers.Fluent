@@ -25,7 +25,7 @@ namespace FileHelpers.Fluent.Core.Converters
             return converterInstance;
         }
 
-        public static ConverterBase GetDefaultConverter(Type type)
+        public static ConverterBase GetDefaultConverter(Type type, string pattern)
         {
             string instanceName = type.FullName;
             if (converterInstances.TryGetValue(instanceName, out ConverterBase converterInstance))
@@ -34,19 +34,27 @@ namespace FileHelpers.Fluent.Core.Converters
             switch (type.Name)
             {
                 case "Boolean":
-                    converterInstance = new BooleanConverter();
+                    converterInstance = string.IsNullOrWhiteSpace(pattern) 
+                                            ? new BooleanConverter() 
+                                            : new BooleanConverter(pattern);
                     break;
                 case "Byte":
                     converterInstance = new ByteConverter();
                     break;
                 case "DateTime":
-                    converterInstance = new DateTimeConverter(CultureInfo.InvariantCulture.DateTimeFormat.ShortDatePattern);
+                    converterInstance = string.IsNullOrWhiteSpace(pattern) 
+                                            ? new DateTimeConverter(CultureInfo.InvariantCulture.DateTimeFormat.ShortDatePattern) 
+                                            : new DateTimeConverter(pattern);
                     break;
                 case "Decimal":
-                    converterInstance = new DecimalConverter();
+                    converterInstance = string.IsNullOrWhiteSpace(pattern) 
+                                            ? new DecimalConverter()
+                                            : new DecimalConverter(pattern);
                     break;
                 case "Double":
-                    converterInstance = new DoubleConverter();
+                    converterInstance = string.IsNullOrWhiteSpace(pattern)
+                                            ? new DoubleConverter()
+                                            : new DoubleConverter(pattern);
                     break;
                 case "Short":
                     converterInstance = new ShortConverter();
@@ -58,7 +66,9 @@ namespace FileHelpers.Fluent.Core.Converters
                     converterInstance = new LongConverter();
                     break;
                 case "Single":
-                    converterInstance = new FloatConverter();
+                    converterInstance = string.IsNullOrWhiteSpace(pattern)
+                                            ? new FloatConverter()
+                                            : new FloatConverter(pattern);
                     break;
                 case "UShort":
                     converterInstance = new UShortConverter();

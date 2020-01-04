@@ -46,7 +46,7 @@ namespace FileHelpers.Fluent.Fixed
                 {
                     if (recordInfo.Type != null)
                     {
-                        converterInstance = ConverterFactory.GetDefaultConverter(recordInfo.Type);
+                        converterInstance = ConverterFactory.GetDefaultConverter(recordInfo.Type, recordInfo.ConverterFormat);
                         return converterInstance == null
                             ? stringValue
                             : converterInstance.StringToField(stringValue);
@@ -63,7 +63,7 @@ namespace FileHelpers.Fluent.Fixed
 
             converterInstance =
                 recordInfo.Converter == null
-                ? ConverterFactory.GetDefaultConverter(recordInfo.Type)
+                ? ConverterFactory.GetDefaultConverter(recordInfo.Type, recordInfo.ConverterFormat)
                 : ConverterFactory.GetConverter(recordInfo.Converter, recordInfo.ConverterFormat);
 
             return converterInstance == null

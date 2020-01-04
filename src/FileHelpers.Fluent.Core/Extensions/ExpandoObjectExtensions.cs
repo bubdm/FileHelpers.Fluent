@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("FileHelpers.Fluent.Fixed")]
 [assembly: InternalsVisibleTo("FileHelpers.Fluent.Xml")]
+[assembly: InternalsVisibleTo("FileHelpers.Fluent.Delimited")]
 
 namespace FileHelpers.Fluent.Core.Extensions
 {
