@@ -42,7 +42,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Core/bin/Release/FileHelpers.Fluent.Core.2.0.0.nupkg
-      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Core.Events/bin/Release/FileHelpers.Fluent.Core.Events.2.0.0.nupkg
-      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Fixed/bin/Release/FileHelpers.Fluent.Fixed.2.0.0.nupkg
-      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Xml/bin/Release/FileHelpers.Fluent.Xml.2.0.0.nupkg
+      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Core/bin/Release/FileHelpers.Fluent.Core.2.1.0.nupkg
+      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Core.Events/bin/Release/FileHelpers.Fluent.Core.Events.2.1.0.nupkg
+      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Fixed/bin/Release/FileHelpers.Fluent.Fixed.2.1.0.nupkg
+      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Xml/bin/Release/FileHelpers.Fluent.Xml.2.1.0.nupkg
+      nuget push -SkipDuplicate -ApiKey $(NuGetKey) -Source https://api.nuget.org/v3/index.json d:/a/1/s/src/FileHelpers.Fluent.Delimited/bin/Release/FileHelpers.Fluent.Delimited.2.1.0.nupkg
