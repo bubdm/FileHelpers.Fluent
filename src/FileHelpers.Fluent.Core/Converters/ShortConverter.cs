@@ -4,6 +4,8 @@ namespace FileHelpers.Fluent.Core.Converters
 {
     public class ShortConverter : ConverterBase
     {
+        public override string FieldType => "short";
+
         public override object StringToField(string @from)
         {
             short.TryParse(from, NumberStyles.Any, CultureInfo.InvariantCulture, out short to);

@@ -1,4 +1,5 @@
 ﻿using FileHelpers.Fluent.Core.Descriptors;
+using FileHelpers.Fluent.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -14,6 +15,8 @@ namespace FileHelpers.Fluent.Core.Events
         protected FluentEventEngineBase(IRecordDescriptor descriptor, Encoding encoding = null) : base(descriptor, encoding)
         {
         }
+
+        protected FluentEventEngineBase(IList<RecordItem> recordItems, Encoding encoding = null) : base(recordItems, encoding) { }
 
         public event FluentEventHandler BeforeReadRecord;
 
@@ -78,8 +81,9 @@ namespace FileHelpers.Fluent.Core.Events
                     {
                         if (beforeReadArgs.LineChanged)
                             currentLine = beforeReadArgs.Line;
+                        var recordItem = GetRecordDescriptor(currentLine, currentLineNumber);
 
-                        ExpandoObject item = await ReadLineAsync(currentLine, Descriptor);
+                        ExpandoObject item = await ReadLineAsync(currentLine, recordItem.Descriptor);
 
                         var afterReadArgs = OnAfterReadRecord(currentLine, currentLineNumber, item);
 

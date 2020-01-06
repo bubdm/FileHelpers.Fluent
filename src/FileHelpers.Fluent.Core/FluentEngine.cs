@@ -6,23 +6,49 @@ using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FileHelpers.Fluent.Core
 {
     public abstract class FluentEngine : IFluentEngine
     {
-        protected FluentEngine(IRecordDescriptor descriptor, Encoding encoding = null)
+        private const string DefaultRecordItemName = "Default";
+
+        private FluentEngine(Encoding encoding)
         {
-            CheckDescriptor(descriptor);
             if (encoding == null)
                 encoding = Encoding.UTF8;
 
             Encoding = encoding;
-            Descriptor = descriptor;
         }
 
-        public IRecordDescriptor Descriptor { get; }
+        protected FluentEngine(IRecordDescriptor descriptor, Encoding encoding = null) : this(encoding)
+        {
+            CheckDescriptor(descriptor);
+            RecordItems = new List<RecordItem>
+                {
+                    new RecordItem
+                    {
+                        Name = DefaultRecordItemName,
+                        Descriptor = descriptor,
+                        RegexPattern = string.Empty
+                    }
+                };
+        }
+
+        protected FluentEngine(IList<RecordItem> recordItems, Encoding encoding = null) : this(encoding)
+        {
+            if (recordItems == null || recordItems.Count == 0)
+                throw new BadFluentConfigurationException("The list of type RecordItem must contains at least 1 item.");
+
+            RecordItems = recordItems;
+
+            foreach (var recordItem in recordItems)
+                CheckDescriptor(recordItem.Descriptor);
+        }
+
+        protected IList<RecordItem> RecordItems { get; }
 
         public Encoding Encoding { get; }
 
@@ -85,6 +111,41 @@ namespace FileHelpers.Fluent.Core
         {
 
         }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected RecordItem GetRecordDescriptor(string line, int lineNumber)
+        {
+            if (RecordItems.Count == 1)
+                return RecordItems[0];
+
+            foreach (var recordItem in RecordItems)
+            {
+                if (Regex.IsMatch(line, recordItem.RegexPattern))
+                    return recordItem;
+            }
+
+            throw new BadFluentConfigurationException($"There is no descriptor configured for line number {lineNumber}.");
+        }
+
+        protected RecordItem GetRecordDescriptor(IDictionary<string, object> record, int lineNumber)
+        {
+            if (RecordItems.Count == 1)
+                return RecordItems[0];
+
+            foreach (var recordItem in RecordItems)
+            {
+                if (record.ContainsKey(recordItem.RecordTypeProperty) 
+                    && record[recordItem.RecordTypeProperty] != null
+                    && Regex.IsMatch(record[recordItem.RecordTypeProperty].ToString(), recordItem.RegexPattern))
+                    return recordItem;
+            }
+
+            throw new BadFluentConfigurationException($"There is no descriptor configured for the record on index {lineNumber--}");
+        }
+
 
         #endregion
 

@@ -6,6 +6,8 @@ namespace FileHelpers.Fluent.Core.Converters
 {
     public class LongConverter : ConverterBase
     {
+        public override string FieldType => "long";
+
         public override object StringToField(string from)
         {
             long.TryParse(from, NumberStyles.Any, CultureInfo.InvariantCulture, out long to);

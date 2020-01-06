@@ -5,6 +5,9 @@ namespace FileHelpers.Fluent.Core.Converters
 {
     public class DateTimeConverter : ConverterBase
     {
+
+        public override string FieldType => "DateTime";
+
         public string Format { get; }
 
         public DateTimeConverter(string format)

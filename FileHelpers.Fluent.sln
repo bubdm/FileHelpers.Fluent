@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileHelpers.Fluent.Xml.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileHelpers.Fluent.Delimited", "src\FileHelpers.Fluent.Delimited\FileHelpers.Fluent.Delimited.csproj", "{CC304F0C-9BFF-4BCD-9631-AD386021D781}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHelpers.Fluent.Delimited.Tests", "tests\FileHelpers.Fluent.Delimited.Tests\FileHelpers.Fluent.Delimited.Tests.csproj", "{F76EBA8B-2C2D-4C7A-8694-394180BBA73B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileHelpers.Fluent.Delimited.Tests", "tests\FileHelpers.Fluent.Delimited.Tests\FileHelpers.Fluent.Delimited.Tests.csproj", "{F76EBA8B-2C2D-4C7A-8694-394180BBA73B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHelpers.Fluent.CodeDom", "src\FileHelpers.Fluent.CodeDom\FileHelpers.Fluent.CodeDom.csproj", "{9803E0F8-C8B8-42AB-99CF-584D71CC1511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{F76EBA8B-2C2D-4C7A-8694-394180BBA73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F76EBA8B-2C2D-4C7A-8694-394180BBA73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F76EBA8B-2C2D-4C7A-8694-394180BBA73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9803E0F8-C8B8-42AB-99CF-584D71CC1511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9803E0F8-C8B8-42AB-99CF-584D71CC1511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9803E0F8-C8B8-42AB-99CF-584D71CC1511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9803E0F8-C8B8-42AB-99CF-584D71CC1511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{886EA066-8CEA-4B64-A52C-DD4AB32C2BB7} = {14D44001-7CC5-48F0-9DC5-CD8B5FB06248}
 		{CC304F0C-9BFF-4BCD-9631-AD386021D781} = {5FE39F25-F301-41C6-A8FE-E9DAEF48934D}
 		{F76EBA8B-2C2D-4C7A-8694-394180BBA73B} = {14D44001-7CC5-48F0-9DC5-CD8B5FB06248}
+		{9803E0F8-C8B8-42AB-99CF-584D71CC1511} = {5FE39F25-F301-41C6-A8FE-E9DAEF48934D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4A1DCAD-189F-4D1D-921F-B88D6B8CCED3}

@@ -2,6 +2,8 @@
 {
     public abstract class ConverterBase
     {
+        public abstract string FieldType { get; }
+
         public abstract object StringToField(string from);
 
         public virtual string FieldToString(object from) =>

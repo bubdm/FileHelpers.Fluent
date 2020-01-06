@@ -45,6 +45,22 @@ namespace FileHelpers.Fluent.Core.Extensions
                 : converterInstance.StringToField(value);
         }
 
+        public static string ResolveType(this IFieldInfoDescriptor fieldDescriptor)
+        {
+            if (fieldDescriptor.Type == null && fieldDescriptor.Converter == null)
+                return "string";
+
+            var converterInstance =
+                fieldDescriptor.Converter == null
+                    ? ConverterFactory.GetDefaultConverter(fieldDescriptor.Type, fieldDescriptor.ConverterFormat)
+                    : ConverterFactory.GetConverter(fieldDescriptor.Converter, fieldDescriptor.ConverterFormat);
+
+            if (converterInstance == null)
+                return "string";
+
+            return converterInstance.FieldType;
+        }
+
 
         public static string CreateFieldString(this IFieldInfoDescriptor fieldBuilder, object fieldValue)
         {

@@ -8,6 +8,8 @@ namespace FileHelpers.Fluent.Core.Converters
     {
         public IntegerConverter() { }
 
+        public override string FieldType => "int";
+
         public override object StringToField(string from)
         {
             int.TryParse(from, NumberStyles.Any, CultureInfo.InvariantCulture, out int to);

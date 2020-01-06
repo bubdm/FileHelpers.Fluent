@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.1.0</Version>
+    <Version>2.2.0</Version>
     <PackageReleaseNotes>Migration to netstandard 2.0 and 2.1
 Was introduced some new improvements and features that leads to breaking changes with previous versions.</PackageReleaseNotes>
     <Description>Core features of Fluent FileHelpers</Description>
@@ -15,6 +15,7 @@ Was introduced some new improvements and features that leads to breaking changes
     <DefineConstants>NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="CodeDom\" />
     <Folder Include="Converters\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Encoding\" />

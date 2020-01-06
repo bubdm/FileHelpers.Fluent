@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\FileHelpers.Fluent.CodeDom\FileHelpers.Fluent.CodeDom.csproj" />
     <ProjectReference Include="..\..\src\FileHelpers.Fluent.Fixed\FileHelpers.Fluent.Fixed.csproj" />
   </ItemGroup>
 

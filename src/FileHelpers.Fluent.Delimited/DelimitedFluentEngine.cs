@@ -33,7 +33,7 @@ namespace FileHelpers.Fluent.Delimited
             await Task.Run(() =>
             {
                 var item = new ExpandoObject();
-                string[] fieldsValue = currentLine.Split(new string[] { ((DelimitedRecordDescriptor)Descriptor).Delimiter }, StringSplitOptions.RemoveEmptyEntries);
+                string[] fieldsValue = currentLine.Split(new string[] { ((DelimitedRecordDescriptor)descriptor).Delimiter }, StringSplitOptions.RemoveEmptyEntries);
                 int index = 0;
                 foreach (KeyValuePair<string, IFieldInfoTypeDescriptor> fieldInfoTypeDescriptor in descriptor.Fields)
                 {
@@ -42,7 +42,7 @@ namespace FileHelpers.Fluent.Delimited
 
                     string fieldValue = index >= fieldsValue.Length ? null : fieldsValue[index];
                     item.InternalTryAdd(fieldInfoTypeDescriptor.Key,
-                        ((IFieldInfoDescriptor)fieldInfoTypeDescriptor.Value).StringToRecord(fieldValue, Descriptor.NullChar));
+                        ((IFieldInfoDescriptor)fieldInfoTypeDescriptor.Value).StringToRecord(fieldValue, descriptor.NullChar));
 
                     index++;
                 }
@@ -56,7 +56,7 @@ namespace FileHelpers.Fluent.Delimited
         {
             writer.NewLine = Environment.NewLine;
             var lineNumber = 1;
-            string delimiter = ((DelimitedRecordDescriptor)Descriptor).Delimiter;
+            string delimiter = ((DelimitedRecordDescriptor)RecordItems[0].Descriptor).Delimiter;
             foreach (ExpandoObject expandoObject in records)
             {
                 var beforeWriteArgs = OnBeforeWriteRecord(expandoObject, lineNumber);
@@ -70,10 +70,11 @@ namespace FileHelpers.Fluent.Delimited
                 }
 
                 var sb = new StringBuilder();
+                var recordItem = GetRecordDescriptor(record, lineNumber);
 
                 foreach (KeyValuePair<string, object> keyValuePair in record)
                 {
-                    if (!Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
+                    if (!recordItem.Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
                         throw new Exception($"The field {keyValuePair.Key} is not configured");
                     if (fieldDescriptor.IsArray)
                         continue;

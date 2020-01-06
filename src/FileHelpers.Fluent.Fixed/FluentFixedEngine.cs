@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +14,10 @@ namespace FileHelpers.Fluent.Fixed
     public sealed class FluentFixedEngine : FluentEventEngineBase
     {
         public FluentFixedEngine(IRecordDescriptor descriptor, Encoding encoding = null) : base(descriptor, encoding)
+        {
+        }
+
+        public FluentFixedEngine(IList<RecordItem> recordItems, Encoding encoding = null) : base(recordItems, encoding)
         {
         }
 
@@ -103,10 +106,13 @@ namespace FileHelpers.Fluent.Fixed
                     lineNumber++;
                     continue;
                 }
+
+                var recordItem = GetRecordDescriptor(record, lineNumber);
+
                 var sb = new StringBuilder();
                 foreach (KeyValuePair<string, object> keyValuePair in record)
                 {
-                    if (!Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
+                    if (!recordItem.Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
                         throw new Exception($"The field {keyValuePair.Key} is not configured");
 
                     if (fieldDescriptor.IsArray)

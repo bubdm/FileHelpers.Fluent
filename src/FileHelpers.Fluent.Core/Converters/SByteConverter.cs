@@ -6,6 +6,8 @@ namespace FileHelpers.Fluent.Core.Converters
 {
     public class SByteConverter : ConverterBase
     {
+        public override string FieldType => "sbyte";
+
         public override object StringToField(string @from)
         {
             if (string.IsNullOrWhiteSpace(from))

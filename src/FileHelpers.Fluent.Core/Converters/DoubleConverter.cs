@@ -19,6 +19,8 @@ namespace FileHelpers.Fluent.Core.Converters
             
         }
 
+        public override string FieldType => "double";
+
         public override object StringToField(string @from)
         {
             if (string.IsNullOrWhiteSpace(from))

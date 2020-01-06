@@ -2,7 +2,7 @@
 
 namespace FileHelpers.Fluent.Fixed
 {
-    public interface IArrayFieldInfoDescriptor : IFieldInfoTypeDescriptor, IRecordDescriptor
+    public interface IArrayFieldInfoDescriptor : IFieldInfoTypeDescriptor, IRecordArrayDescriptor
     {
         int ArrayLength { get; set; }
 

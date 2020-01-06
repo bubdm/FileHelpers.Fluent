@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.2.0</Version>
-    <PackageReleaseNotes>Migration to netstandard 2.0 and 2.1
-Was introduced some new improvements and features that leads to breaking changes with previous versions.</PackageReleaseNotes>
-    <Description>Base library to add support to events into an engine</Description>
     <Authors>Naves Harlen</Authors>
+    <Company>Naves Harlen</Company>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>
     <PackageProjectUrl>https://github.com/harlennaves/FileHelpers.Fluent</PackageProjectUrl>
+    <Description>Exposes a way to generate class definition from a descriptor</Description>
+    <PackageReleaseNotes>Support to generate CSharp and VBNet classes.</PackageReleaseNotes>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FileHelpers.Fluent.Core\FileHelpers.Fluent.Core.csproj" />
   </ItemGroup>
-
 </Project>

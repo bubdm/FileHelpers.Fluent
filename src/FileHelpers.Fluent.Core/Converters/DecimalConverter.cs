@@ -18,6 +18,8 @@ namespace FileHelpers.Fluent.Core.Converters
 
         }
 
+        public override string FieldType => "decimal";
+
         public override object StringToField(string @from)
         {
             if (string.IsNullOrWhiteSpace(from))

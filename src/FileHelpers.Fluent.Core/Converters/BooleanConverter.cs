@@ -11,6 +11,8 @@ namespace FileHelpers.Fluent.Core.Converters
         private string falseValue;
         private bool useDefaults;
 
+        public override string FieldType => "bool";
+
         public BooleanConverter() 
         {
             trueValue = "Y";

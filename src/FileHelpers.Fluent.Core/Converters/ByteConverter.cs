@@ -7,6 +7,8 @@ namespace FileHelpers.Fluent.Core.Converters
 {
     public class ByteConverter : ConverterBase
     {
+        public override string FieldType => "byte";
+
         public override object StringToField(string from)
         {
             if (string.IsNullOrWhiteSpace(from))

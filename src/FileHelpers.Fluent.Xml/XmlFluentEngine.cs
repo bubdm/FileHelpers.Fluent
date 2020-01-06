@@ -63,8 +63,8 @@ namespace FileHelpers.Fluent.Xml
 #endif
 
             IEnumerable<XElement> elements = null;
-
-            string rootElementName = ((XmlRecordDescriptor)Descriptor).RootElementName;
+            var recordItem = GetRecordDescriptor(string.Empty, 0);
+            string rootElementName = ((XmlRecordDescriptor)recordItem.Descriptor).RootElementName;
             if (string.IsNullOrWhiteSpace(rootElementName))
                 elements = xmlDocument.Elements();
             else
@@ -77,7 +77,7 @@ namespace FileHelpers.Fluent.Xml
             
             foreach (XElement element in elements)
             {
-                items.Add(ReadElement(element, Descriptor));
+                items.Add(ReadElement(element, recordItem.Descriptor));
             }
 
             return items.ToArray();
@@ -85,7 +85,8 @@ namespace FileHelpers.Fluent.Xml
 
         public override async Task WriteStreamAsync(TextWriter writer, IEnumerable<ExpandoObject> records, bool flush = true)
         {
-            var xmlDescriptor = ((XmlRecordDescriptor)Descriptor);
+            var recordItem = GetRecordDescriptor(string.Empty, 0);
+            var xmlDescriptor = ((XmlRecordDescriptor)recordItem.Descriptor);
             string rootElementName = xmlDescriptor.RootElementName;
             string elementName = xmlDescriptor.ElementName;
 
@@ -108,9 +109,9 @@ namespace FileHelpers.Fluent.Xml
                 foreach (KeyValuePair<string, object> keyValuePair in record)
                 {
                     string propertyName = keyValuePair.Key;
-                    if (!Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
+                    if (!recordItem.Descriptor.Fields.TryGetValue(keyValuePair.Key, out IFieldInfoTypeDescriptor fieldDescriptor))
                     {
-                        fieldDescriptor = Descriptor.Fields.Values.FirstOrDefault(x => ((IXmlFieldPropertyNameInfoDescriptor)x).PropertyName == keyValuePair.Key);
+                        fieldDescriptor = recordItem.Descriptor.Fields.Values.FirstOrDefault(x => ((IXmlFieldPropertyNameInfoDescriptor)x).PropertyName == keyValuePair.Key);
                         if (fieldDescriptor == null)
                             throw new Exception($"The field {keyValuePair.Key} is not configured");
                     }
