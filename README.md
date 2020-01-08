@@ -5,23 +5,27 @@ All configuration can be made using a Builder to describe a record.
 This project is based on [FileHelpers](https://www.filehelpers.net/) project.
 
 ## NuGet packages
-https://www.nuget.org/packages/FileHelpers.Fluent.Core/2.0.0
+[FileHelpers.Fluent.Core](https://www.nuget.org/packages/FileHelpers.Fluent.Core)
 
-https://www.nuget.org/packages/FileHelpers.Fluent.Core.Events/2.0.0
+[FileHelpers.Fluent.Core.Events](https://www.nuget.org/packages/FileHelpers.Fluent.Core.Events)
 
-https://www.nuget.org/packages/FileHelpers.Fluent.Fixed/2.0.0
+[FileHelpers.Fluent.Fixed](https://www.nuget.org/packages/FileHelpers.Fluent.Fixed)
 
-https://www.nuget.org/packages/FileHelpers.Fluent.Xml/2.0.0
+[FileHelpers.Fluent.Delimited](https://www.nuget.org/packages/FileHelpers.Fluent.Delimited)
+
+[FileHelpers.Fluent.Xml](https://www.nuget.org/packages/FileHelpers.Fluent.Xml)
+
+[FileHelpers.Fluent.CodeDom - (Code Generation CSharp and VBNet)](https://www.nuget.org/packages/FileHelpers.Fluent.CodeDom)
 
 ## Roadmap
 
  - [x] Migration to NetStandard 2.0 
  - [x] Migration to NetStandard 2.1
- - [ ] Fixed Layout Engine - Multiple Record Types - (January 2020)
- - [ ] Delimited layout Engine - (January 2020)
- - [ ] Delimited layout Engine - Multiple Record Types - (January 2020)
- - [ ] Add support to ABCDIC encoding - (January 2020)
- - [ ] Support to generate class (c#) from descriptor - (February 2020)
+ - [x] Fixed Layout Engine - Multiple Record Types - (January 2020)
+ - [x] Delimited layout Engine - (January 2020)
+ - [x] Delimited layout Engine - Multiple Record Types - (January 2020)
+ - [ ] Add support to EBCDIC encoding - (January 2020)
+ - [x] Support to generate class (c#) from descriptor - (February 2020)
  - [ ] Website with documentation - (March 2020)
 
 # Fixed Engine
