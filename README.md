@@ -19,13 +19,13 @@ This project is based on [FileHelpers](https://www.filehelpers.net/) project.
 
 ## Roadmap
 
- - [x] Migration to NetStandard 2.0 
- - [x] Migration to NetStandard 2.1
- - [x] Fixed Layout Engine - Multiple Record Types - (January 2020)
- - [x] Delimited layout Engine - (January 2020)
- - [x] Delimited layout Engine - Multiple Record Types - (January 2020)
- - [ ] Add support to EBCDIC encoding - (January 2020)
- - [x] Support to generate class (c#) from descriptor - (February 2020)
+ - [x] ~~Migration to NetStandard 2.0~~ 
+ - [x] ~~Migration to NetStandard 2.1~~
+ - [x] ~~Fixed Layout Engine - Multiple Record Types - (January 2020)~~
+ - [x] ~~Delimited layout Engine - (January 2020)~~
+ - [x] ~~Delimited layout Engine - Multiple Record Types - (January 2020)~~
+ - [x] ~~Add support to EBCDIC encoding - (January 2020)~~
+ - [x] ~~Support to generate class (c#) from descriptor - (February 2020)~~
  - [ ] Website with documentation - (March 2020)
 
 # Fixed Engine
