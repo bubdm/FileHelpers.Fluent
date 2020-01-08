@@ -7,7 +7,7 @@
     <Description>Engine to deal with delimited char files</Description>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>
     <PackageProjectUrl>https://github.com/harlennaves/FileHelpers.Fluent</PackageProjectUrl>
-    <PackageReleaseNotes>Migration to netstandard 2.0 and 2.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support to MultiRecord files</PackageReleaseNotes>
     <Company>Naves Harlen</Company>
     <Authors>Naves Harlen</Authors>
   </PropertyGroup>

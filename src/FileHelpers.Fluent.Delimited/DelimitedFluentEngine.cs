@@ -21,6 +21,12 @@ namespace FileHelpers.Fluent.Delimited
         {
         }
 
+        public DelimitedFluentEngine(
+            IList<RecordItem> recordItems,
+            Encoding encoding = null
+            ) : base(recordItems, encoding)
+        { }
+
         #region Protected Override Methods
 
         protected override void CheckFieldDescriptor(string fieldName, IFieldInfoTypeDescriptor fieldDescriptor)
