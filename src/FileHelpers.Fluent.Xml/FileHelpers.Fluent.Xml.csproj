@@ -3,9 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.2.0</Version>
-    <PackageReleaseNotes>Migration to netstandard 2.0 and 2.1
-Was introduced some new improvements and features that leads to breaking changes with previous versions.</PackageReleaseNotes>
+    <Version>2.3.0</Version>
+    <PackageReleaseNotes>Small bug-fixes</PackageReleaseNotes>
     <Description>Engine to deal with XML files</Description>
     <Authors>Naves Harlen</Authors>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>

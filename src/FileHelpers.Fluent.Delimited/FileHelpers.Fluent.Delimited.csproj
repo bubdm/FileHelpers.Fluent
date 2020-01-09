@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Engine to deal with delimited char files</Description>
     <Copyright>Copyright © Harlen Morais Naves</Copyright>
     <PackageProjectUrl>https://github.com/harlennaves/FileHelpers.Fluent</PackageProjectUrl>
-    <PackageReleaseNotes>Added support to MultiRecord files</PackageReleaseNotes>
+    <PackageReleaseNotes>Small bug-fixes</PackageReleaseNotes>
     <Company>Naves Harlen</Company>
     <Authors>Naves Harlen</Authors>
   </PropertyGroup>
