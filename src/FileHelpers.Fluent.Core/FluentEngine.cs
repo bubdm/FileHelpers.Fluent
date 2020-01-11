@@ -52,6 +52,8 @@ namespace FileHelpers.Fluent.Core
 
         public Encoding Encoding { get; }
 
+        public IRecordDescriptor Descriptor => RecordItems[0].Descriptor;
+
 
         #region IFluentEngine Implementation
 
