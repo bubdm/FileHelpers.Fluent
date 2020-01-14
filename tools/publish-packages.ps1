@@ -6,5 +6,5 @@ $packages = Get-ChildItem -Filter *.nupkg -Recurse -File -Name | ForEach-Object 
 
 ForEach ($package in $packages) {
     Write-Host $package
-    .\nuget.exe push -SkipDuplicate -ApiKey $apiKey -Source https://api.nuget.org/v3/index.json $package
+    d:\a\1\s\tools\nuget.exe push -SkipDuplicate -ApiKey $apiKey -Source https://api.nuget.org/v3/index.json $package
 }
